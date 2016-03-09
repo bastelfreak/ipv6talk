@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+      @import url(//fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(//fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+         body {
+        font-family: 'Droid Serif';
+      }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+      }
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+      li p { line-height: 1.25em; }
+      .red { color: #fa0000; }
+      .large { font-size: 2em; }
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
+      code {
+        -moz-border-radius: 5px;
+        -web-border-radius: 5px;
+        background: #e7e8e2;
+        border-radius: 5px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+      .pull-left {
+        float: left;
+        width: 47%;
+      }
+      .pull-right {
+        float: right;
+        width: 47%;
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      #slide-how .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+      .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 1em;
+      }
+      .right-column-center {
+        width: 75%;
+        float: right;
+        padding-top: 1em;
+        text-align: center;
+      }
+      .right-column img {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle, inverse
+
+# IPv6
+
+---
+
+# Content
+
+1. Why do we need IPv6
+2. Features
+3. Implementation
+
+---
+
+class: middle, center, inverse
+
+## Why do we need IPv6
+
+---
+
+.left-column[
+## Why do we need IPv6
+### - IPv4 Basics
+]
+.right-column[
+* 32bit address range
+
+* 2^32 addresses => 4billions
+
+* 1.2billions active devices
+
+* 10 years ago everybody got a class C or B net
+
+* less available nets => smaller allocation
+
+* 595,385 BGP entries in full table
+
+* Several router fail at 524288 entries (512 * 1024)
+]
+
+---
+
+background-image: url(ASxml.svg)
+
+---
+
+background-image: url(routing.svg)
+
+---
+
+background-image: url(routing2.svg)
+
+---
+
+class: middle, center, inverse
+
+## Features
+
+---
+
+.left-column[
+## Features
+### - Moar!! Addresses
+]
+
+.right-column[
+* 128bit length
+
+* 2^128 addresses
+
+* 7.9*10^28 times bigger than IPv4 space
+
+* 29bit prefix for each LIR
+
+* LIR can get even one per location
+
+* even 19bit prefix if you blame the RIR (2003::/19)
+
+* every site should get their own 64bit prefix
+
+* 48bit minimal PI space
+
+* 2a00::/12 for RIPE
+
+* IANA currently uses 2000::/3
+
+]
+
+---
+
+.left-column[
+## Features
+### - Moar!! Addresses
+### - New notation
+]
+
+.right-column[
+* New hex notation: 2a01:4f8:11a:b1f::4/64
+
+* Full notation: 2a01:04f8:011a:0b1f:0000:0000:0000:0004
+
+* 8 groups of 16bit in hex
+
+* ignore leading 0s in groups
+
+* replace multiple 0 groups with ::
+
+* /64 indicates the prefix length
+
+* 64bit is default, can be omitted
+]
+
+---
+
+.left-column[
+## Features
+### - Moar!! Addresses
+### - New notation
+### - Improvement
+]
+
+.right-column[
+* No broadcast
+
+* multicast is mandatory
+
+* Neighbor Discovery Protocol (NDP) as ARP replacement
+
+* always assign 64bit prefixes to devices, no single IP-Addresses
+
+* privacy extension for host part of addresses
+]
+
+---
+
+.left-column[
+## Features
+### - Moar!! Addresses
+### - New notation
+### - Improvement
+### - Useless stuff
+]
+
+.right-column[
+* mobile IPv6
+
+* SLAAC - StateLess Address AutoConfiguration
+
+* DAD - Duplicate Address Detection
+
+* Fake RA - Router Advertisment
+
+* RA Flooding
+
+* Fake DAD
+]
+
+---
+.left-column[
+## Features
+### - Moar!! Addresses
+### - New notation
+### - Improvement
+### - Useless stuff
+### - Good to know
+]
+.right-column[
+* IPv6 is always prefered over IPv4
+
+* IPv4 and IPv6 are seperate networks, awesome for breaking stuff
+
+* BIOS PXE boot will never support IPv6
+
+* link local address now contains MAC address fe80::52e5:49ff:fe41:c204
+
+* route your prefix to server, no bridging
+
+* STOP SHITTY NAT!
+]
+
+---
+
+class: middle, center, inverse
+
+##Implementation
+
+---
+.left-column[
+##Implementation
+### - Global Routing
+]
+.right-column[
+* IPv6 addresses are 4 times bigger than IPv4
+
+* Requires 4 times more space for each BGP entry
+
+* Router are already full...
+
+* Bigger prefixes for each AS -> less prefixes -> less BGP entries
+
+* Hierarchical routing
+
+* Renumber a server if he changes the location, don't route the prefix
+
+* DO NOT ROUTE THE PREFIX
+]
+
+---
+
+class: middle, center, inverse
+
+## SERIOUSLY, DO NOT ROUTE A SINGLE PREFIX
+
+---
+.left-column[
+##Implementation
+### - Global Routing
+### - System configuration
+]
+.right-column[
+* static for servers
+
+* always try to use link local gateway fe80::1
+
+* SLAAC for clients in trusted networks
+
+* DHCP6 or static for clients in untrusted networks
+]
+
+---
+
+class: middle, center, inverse
+
+## Summary
+### Plan your hierarchy wisely
+
+### Honor your hierarchy
+
+### Take care with SLAAC
+
+### Strange network timeouts? You + destination have IPv6, but it is borked and fallback is happening
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>

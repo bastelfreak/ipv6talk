@@ -267,6 +267,41 @@ class: middle, center, inverse
 ### - Moar!! Addresses
 ### - New notation
 ### - Improvement
+### - Multicast
+]
+
+.right-column[
+Excursion about Multicast
+
+* Own address space, prefix is ff::/8
+
+* used for communication in groups
+
+* different groups and scopes available
+
+* Simply assign an address from a group to you to be part of the group
+
+* ff0X::1 : every device with IPv6 (like IPv4 broadcast)
+
+* ff0X::2 : all router
+
+* ff0X::f : UPnP devices
+
+* ff0X::101 : NTP server
+
+* ff0X::1:2 : DHCPv6 server
+
+* Where X is: 1 = Interface-Local; 2 Link-Local, 8 Organization-Local
+]
+
+---
+
+.left-column[
+## Features
+### - Moar!! Addresses
+### - New notation
+### - Improvement
+### - Multicast
 ### - Useless stuff
 ]
 
@@ -291,6 +326,7 @@ class: middle, center, inverse
 ### - Moar!! Addresses
 ### - New notation
 ### - Improvement
+### - Multicast
 ### - Useless stuff
 ### - Good to know
 ]
@@ -333,9 +369,9 @@ class: middle, center, inverse
 
 * Hierarchical routing
 
-* Renumber a server if he changes the location, don't route the prefix
+* Renumber a server if he changes the location, don't route his prefix
 
-* DO NOT ROUTE THE PREFIX
+* DO NOT ROUTE A 64bit PREFIX
 ]
 
 ---
@@ -343,6 +379,10 @@ class: middle, center, inverse
 class: middle, center, inverse
 
 ## SERIOUSLY, DO NOT ROUTE A SINGLE PREFIX
+
+---
+
+background-image: url(bgprouter.svg)
 
 ---
 

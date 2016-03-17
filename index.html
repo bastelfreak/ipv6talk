@@ -135,9 +135,9 @@ class: center, middle, inverse
 
 # Content
 
-1. Why do we need IPv6
-2. Features
-3. Implementation
+1. Why we need IPv6 (or why IPv4 sucks)
+2. New Features
+3. Implementation of IPv6
 
 ---
 
@@ -148,19 +148,19 @@ class: middle, center, inverse
 ---
 
 .left-column[
-## Why do we need IPv6
+## Why we need IPv6
 ### - IPv4 Basics
 ]
 .right-column[
-* 32bit address range
+* 32-bit address range
 
-* 2^32 addresses => 4billions
+* 2^32 addresses => 4 billion
 
-* 1.2billions active devices
+* 1.2 billion active devices
 
 * 10 years ago everybody got a class C or B net
 
-* less available nets => smaller allocation
+* Less available nets => smaller allocation
 
 * 595,385 BGP entries in full table
 
@@ -193,21 +193,21 @@ class: middle, center, inverse
 ]
 
 .right-column[
-* 128bit length
+* 128-bit length
 
 * 2^128 addresses
 
 * 7.9*10^28 times bigger than IPv4 space
 
-* 29bit prefix for each LIR
+* 29-bit prefix for each LIR
 
 * LIR can get even one per location
 
-* even 19bit prefix if you blame the RIR (2003::/19)
+* Even 19-bit prefix if you blame the RIR (2003::/19)
 
-* every site should get their own 64bit prefix
+* Every site should get their own 64-bit prefix
 
-* 48bit minimal PI space
+* 48-bit minimal PI space
 
 * 2a00::/12 for RIPE
 
@@ -228,15 +228,15 @@ class: middle, center, inverse
 
 * Full notation: 2a01:04f8:011a:0b1f:0000:0000:0000:0004
 
-* 8 groups of 16bit in hex
+* 8 groups of 16-bit in hex
 
-* ignore leading 0s in groups
+* Ignore leading 0s in groups
 
-* replace multiple 0 groups with ::
+* Replace the biggest successive group of zeros with ::
 
 * /64 indicates the prefix length
 
-* 64bit is default, can be omitted
+* 64-bit is default, can be omitted
 ]
 
 ---
@@ -251,13 +251,13 @@ class: middle, center, inverse
 .right-column[
 * No broadcast
 
-* multicast is mandatory
+* Multicast is mandatory
 
 * Neighbor Discovery Protocol (NDP) as ARP replacement
 
-* always assign 64bit prefixes to devices, no single IP-Addresses
+* Always assign 64bit prefixes to devices, no single IP-Addresses
 
-* privacy extension for host part of addresses
+* Privacy extension for host part of addresses
 ]
 
 ---
@@ -271,7 +271,7 @@ class: middle, center, inverse
 ]
 
 .right-column[
-* mobile IPv6
+* Mobile IPv6
 
 * SLAAC - StateLess Address AutoConfiguration
 
@@ -285,6 +285,7 @@ class: middle, center, inverse
 ]
 
 ---
+
 .left-column[
 ## Features
 ### - Moar!! Addresses
@@ -300,9 +301,11 @@ class: middle, center, inverse
 
 * BIOS PXE boot will never support IPv6
 
-* link local address now contains MAC address fe80::52e5:49ff:fe41:c204
+* UEFI PXE boot supports IPv6 + IPv4
 
-* route your prefix to server, no bridging
+* Link local address now contains MAC address fe80::52e5:49ff:fe41:c204
+
+* Route your prefix to server, no bridging
 
 * STOP SHITTY NAT!
 ]
@@ -314,6 +317,7 @@ class: middle, center, inverse
 ##Implementation
 
 ---
+
 .left-column[
 ##Implementation
 ### - Global Routing
@@ -323,7 +327,7 @@ class: middle, center, inverse
 
 * Requires 4 times more space for each BGP entry
 
-* Router are already full...
+* Routers are already full ...
 
 * Bigger prefixes for each AS -> less prefixes -> less BGP entries
 
@@ -341,19 +345,44 @@ class: middle, center, inverse
 ## SERIOUSLY, DO NOT ROUTE A SINGLE PREFIX
 
 ---
+
 .left-column[
 ##Implementation
 ### - Global Routing
 ### - System configuration
 ]
 .right-column[
-* static for servers
+* Static for servers
 
-* always try to use link local gateway fe80::1
+* Always try to use link local gateway fe80::1
 
 * SLAAC for clients in trusted networks
 
 * DHCP6 or static for clients in untrusted networks
+]
+
+
+---
+
+.left-column[
+##Implementation
+### - Global Routing
+### - System configuration
+### - Debugging
+]
+.right-column[
+
+* Do you run a firewall? Does it care about IPv6?
+
+* You killed IPv4/IPv6 Routing/Firewalling? The other protocol will still work
+
+* Never forget that IPv6 is always preferred over IPv4
+
+* Local issues? Check the cache size of your switch
+
+* Routing issues? Check the cache size of your routers
+
+* Initial connection is slow? Src + Dest have IPv6 configured but it is broken => fallback to IPv4
 ]
 
 ---
@@ -365,9 +394,9 @@ class: middle, center, inverse
 
 ### Honor your hierarchy
 
-### Take care with SLAAC
+### Be careful with SLAAC
 
-### Strange network timeouts? You + destination have IPv6, but it is borked and fallback is happening
+.footnote[&copy; Tim Meusel]
     </textarea>
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
     </script>
